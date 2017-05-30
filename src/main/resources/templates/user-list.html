@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html xmlns="http://www.thymeleaf.org">
-<!--
-#set(Collection<User> users)
--->
 <head>
   <meta charset="UTF-8"/>
   <title>用户列表</title>
@@ -10,10 +7,6 @@
 </head>
 <body>
 <div>
-<!--#for(User user : users)
-  <div><a href="/users/${user.id}">${user.name}</a></div>
-  <div>简介: ${user.introduction}</div>
-#end-->
 
   <div th:each="user : ${users}">
     <div><a th:href="@{'/users/'+${user.id}}" th:text="${user.name}"></a></div>
