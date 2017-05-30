@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title th:text="'错误' + ${errorCode}"></title>
+  <link rel="stylesheet" href="../static/css/basic.css" />
+</head>
+<body>
+<div>
+  <div>错误码: <span th:text="${errorCode}"></span></div>
+  <div>原因: <span th:text="${reason}"></span></div>
+  <a href="/">回到首页</a>
+</div>
+<script src="../static/js/vue.min.js"></script>
+</body>
+</html>

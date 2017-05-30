@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<!--#set(User user)
+#set(Boolean canEdit)-->
+<head>
+  <meta charset="UTF-8"/>
+  <title>用户信息</title>
+  <link rel="stylesheet" href="../static/css/basic.css" />
+</head>
+<body>
+<div>
+  <div th:text="${user.name}"></div>
+  <div>简介: <span th:text="${user.introduction}">用户简介</span></div>
+ <!-- #if(canEdit)
+  <a th:href="@{/users/${user.id}/edit}" >修改信息</a>
+  #end-->
+
+  <a th:href="@{'/users/'+ ${user.id} + '/edit'}" th:remove="${canEdit}?none:tag">修改信息</a>
+</div>
+<script src="../static/js/vue.min.js"></script>
+</body>
+</html>

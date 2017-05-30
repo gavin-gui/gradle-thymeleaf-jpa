@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>写文章</title>
+  <link rel="stylesheet" th:href="@{/static/css/basic.css}" />
+  <style>
+  #article {
+    width: 100%;
+    margin: 20px;
+  }
+  #title, #content {
+    overflow: hidden;
+    resize: none;
+  }
+  #title {
+    width: 67%;
+    height: 2em;
+    margin-left: 120px;
+    padding: 5px;
+  }
+  #content {
+    width: 90%;
+    min-height: 30em;
+  }
+  </style>
+</head>
+<body>
+<div>
+  <form id="article" th:action="@{'/api/articles/'+${subTarget}}" method="post">
+    <div>
+      <input id="title" name="title" placeholder="标题" type="text" th:value="${ar.title}"/>
+    </div>
+    <div>
+      <textarea id="content" name="content" placeholder="内容" th:text="${ar.content}"></textarea>
+    </div>
+    <button type="submit">发表</button>
+    <button type="button" onclick=redirectTo('"/articles/"+/*[[${ar.id}]]*/') >取消</button>
+  </form>
+</div>
+<script th:src="@{/static/js/vue.min.js}"></script>
+<script>
+function redirectTo(dest) {
+  window.location = dest
+}
+</script>
+</body>
+</html>
