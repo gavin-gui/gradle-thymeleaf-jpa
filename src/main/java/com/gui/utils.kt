@@ -24,7 +24,3 @@ fun String.md5() : String {
     return Utils.md5(this)
 }
 
-fun main(args: Array<String>) {
-    println("123".md5())
-}
-

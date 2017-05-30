@@ -4,12 +4,15 @@ buildscript {
 		kotlin_version = '1.1.2-4'
 	}
 	repositories {
-//		mavenCentral()
+		mavenLocal()
 		maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+		mavenCentral()
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+		classpath(
+				"org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}",
+				"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+		)
 	}
 }
 
@@ -25,12 +28,18 @@ repositories {
 	mavenCentral()
 }
 
+bootRepackage {
+	mainClass = "com.gui.GradleThymeleafJpaApplication"
+}
+
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-	compile('org.springframework.boot:spring-boot-starter-web')
+	compile(
+			'org.springframework.boot:spring-boot-starter-data-jpa',
+			'org.springframework.boot:spring-boot-starter-thymeleaf',
+			'org.springframework.boot:spring-boot-starter-web',
+			"org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+	)
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
 }
